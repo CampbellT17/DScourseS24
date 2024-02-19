@@ -12,8 +12,8 @@ df <- copy_to(sc, df1,overwrite = TRUE)
 class(df1)
 class(df)
 
-print(names(df1))
-print(names(df))
+print(colnames(df1))
+print(colnames(df))
 
 df %>% select(Sepal_Length, Species) %>% head %>% print
 
