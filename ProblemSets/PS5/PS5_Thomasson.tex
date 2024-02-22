@@ -19,24 +19,12 @@
 \begin{document}
 \maketitle
 
-\section{PS5 Questions}
+\section{PS5 - Non-API}
 
-I am not sure what it has to do with accounting research, but I love comparing historical NBA stats from past eras. So, Basketball Reference has a lot of data I like to look at when I get bored. That would be fun to look at. If not necessarily professionally productive...
+I am a huge NBA buff, so I brought in the daily-updated table of NBA Draft Lottery odds for teams currently out of the NBA Playoff picture. While it is not useful for my research, it is a guilty pleasure, as I can simply run the script on any given day going forward to download the most recent odds. I did not use any tutorial for this other than the Wikipedia example we worked through in class.
 
-As for questions raised in prior questions on PS5:
+\section{PS5 - API}
 
-JSON:
-
-mydf's object is "tbldf"     "tbl"        "data.frame"
-
-mydf|date's object is "character"
-
-Sparklyr:
-
-df1's object is "tbldf"     "tbl"        "data.frame"
-
-df's object is "tblspark" "tblsql"   "tbllazy"  "tbl" 
-
-The columns are different in that df1's variable names are separated by a period if the variable has more than two words in its name, whereas df's variable names are separated by an underscore. I assume the difference is due to functionality/syntax in how sparklyr interacts with datasets.
+This data will be more useful to Accounting research than the above section. The quantmod package in R allows me to bring in daily stock prices for any stock ticker I choose for the last 365 days. This can be especially useful if I am researching market reactions centered around an earnings announcement date.
 
 \end{document}
