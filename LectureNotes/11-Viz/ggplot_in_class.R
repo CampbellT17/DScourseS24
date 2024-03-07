@@ -1,6 +1,9 @@
+install.packages("ggthemes","hexbin")
+
 library(tidyverse)
 library(ggthemes)
 library(hexbin)
+library(ggplot2)
 
 # Example: mpg dataset (city and highway fuel economy for various makes/models/years of automobiles)
 
