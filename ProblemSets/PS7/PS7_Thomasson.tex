@@ -1,0 +1,56 @@
+\documentclass{article}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[english]{babel}
+
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{csvsimple}
+\usepackage{}
+
+\title{PS7_Thomasson}
+\author{Campbell Thomasson}
+
+\begin{document}
+\maketitle
+
+\section{PS7}
+
+At what rate are log wages missing? Do you think the logwage variable is most likely
+to be MCAR, MAR, or MNAR? After removing observations with missing values for hgc or tenure are missing, there are 2,229 observations remaining. Of those 2,229 observations, 2,229 - 1,669 = 560 logwage observations are missing. 560/2229 is a logwage observation missing rate of approximately 25.12 percent. The logwage variable is most likely to be MAR< as is standard across econoemtric research.
+
+The true value of \( \hat{\beta}_1 \) = 0.093. Comment on the differences of \( \hat{\beta}_1 \) across the models. What patterns do you see? What can you conclude about the veracity of the various imputation methods? Also discuss what the estimates of \( \hat{\beta}_1 \) are for the last two methods.
+
+First, See the table below:
+
+\begin{table}[htbp]
+  \centering
+  \caption{PS7 Models}
+  \label{tab:summary}
+  \begin{tabular}{|c|c|c|c|c|c|c} % Adjust the column alignment as needed
+    \hline
+    Term & Statistic & Model 1 & Model 2 & Model 3 & Model 4 & Model 5\\
+    \hline
+    \csvreader[head to column names]{PS7Models.csv}{}{% Specify the column names from the CSV file
+      \csvcolii & \csvcoliii & \csvcoliv & \csvcolv &\csvcolvi & \csvcolvii & \csvcolviii\\ % Adjust the number of columns based on your CSV file
+      }
+  \end{tabular}
+\end{table}
+
+The \( \hat{\beta}_1 \) are all lower than the true 0.093. The lowest \( \hat{\beta}_1 \) value is Model 3, which is simply replacing missing values with the mean. The other variations are all in the 0.059-0.063 range. It seems that simply leaving out the missing observations gave a closer approximation to the true \( \hat{\beta}_1 \) than trying to use multiple imputations or replacing the missing values with the mean. 
+
+Model 4 uses the original model (Model 1) to predict the missing values of logwage, then uses those predicted values in the regression.
+
+Model 5 performs multiple imputations (5 in this case) and pools the results together into one estimated model.
+
+Tell me about the progress you’ve made on your project. What data are you using?
+What kinds of modeling approaches do you think you’re going to take? I have actually been meaning to ask you about this. I am an accounting Ph. D. student and obviously primarily conduct accounting research. I would like to use Compustat, CRSP, and I/B/E/S data to replicate a paper that I think would be useful for me to have a greater understanding of in order to write my Ph. D. program's first-year summer paper, but if you would prefer our research project be a completely original idea as opposed to a replication, I totally understand.
+
+\end{document}
