@@ -1,0 +1,92 @@
+\documentclass{article}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[english]{babel}
+
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{csvsimple}
+\usepackage{booktabs}
+\usepackage{siunitx}
+\usepackage{}
+\newcolumntype{d}{S[
+    input-open-uncertainty=,
+    input-close-uncertainty=,
+    parse-numbers = false,
+    table-align-text-pre=false,
+    table-align-text-post=false
+ ]}
+
+\title{PS8_Thomasson}
+\author{Campbell Thomasson}
+
+\begin{document}
+\maketitle
+
+\section{PS8}
+
+How does your OLS estimate compare with the true value of beta in (1)?
+
+The true value of \( {\beta} \) = 1.5, -1, -0.25, 0.75, 3.5, -2, 0.5, 1, 1.25, 2. 
+I get \( \hat{\beta}_OLS \) =  1.5007654, -1.0003575, -0.2483209, 0.7492180, 3.4994275, -1.9976231, 0.4992949, 1.0018450, 1.248056, 1.9991716
+
+Very very close in value.
+
+Comparing L-BFGS and NM:
+
+I get \( \hat{\beta}_OLSLBFGS \) =  1.500765, -1.000358, -0.2483209, 0.749218, 3.499427, -1.997623, 0.4992949, 1.001845, 1.248056, 1.999172
+
+I get \( \hat{\beta}_OLSNM \) =  1.801041, -0.8215647, 0.2255767, 0.7388727, 3.419135, -2.112528, 0.6907103, 1.226031, 1.896854, 1.602342
+
+My Nelder Mead estimate is obviously much different from my other estimates, so if I have done something wrong, please let me know where you think I may have gone wrong in my code.
+
+See the table below for modelsummary() table generated for linear regression estimate.
+
+\begin{table}
+\centering
+\begin{tabular}[t]{lc}
+\toprule
+  & (1)\\
+\midrule
+X1 & \num{1.501}\\
+ & \vphantom{9} (\num{0.002})\\
+X2 & \num{-1.000}\\
+ & \vphantom{8} (\num{0.002})\\
+X3 & \num{-0.248}\\
+ & \vphantom{7} (\num{0.002})\\
+X4 & \num{0.749}\\
+ & \vphantom{6} (\num{0.002})\\
+X5 & \num{3.499}\\
+ & \vphantom{5} (\num{0.002})\\
+X6 & \num{-1.998}\\
+ & \vphantom{4} (\num{0.002})\\
+X7 & \num{0.499}\\
+ & \vphantom{3} (\num{0.002})\\
+X8 & \num{1.002}\\
+ & \vphantom{2} (\num{0.002})\\
+X9 & \num{1.248}\\
+ & \vphantom{1} (\num{0.002})\\
+X10 & \num{1.999}\\
+ & (\num{0.002})\\
+\midrule
+Num.Obs. & \num{100000}\\
+R2 & \num{0.991}\\
+R2 Adj. & \num{0.991}\\
+AIC & \num{144997.8}\\
+BIC & \num{145102.4}\\
+Log.Lik. & \num{-72487.893}\\
+RMSE & \num{0.50}\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+All beta estimates I generated are fairly close to the original, except for the Nelder Mead estimate, which admittedly may just be user error on my part.
+
+\end{document}
