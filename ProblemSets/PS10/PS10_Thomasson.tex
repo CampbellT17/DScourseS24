@@ -1,0 +1,33 @@
+\documentclass{article}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[english]{babel}
+
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+\title{PS10_Thomasson}
+\author{Campbell Thomasson}
+
+\begin{document}
+\maketitle
+
+\section{PS10}
+
+Per the table below, none of these accuracy measures are that different from one another, all ranging from (0.843 - 0.868). All 5 schools will produce different results, but in this case, the magnitude of the difference is quite small (within 0.025 of each other).
+
+\begin{tabular}{llr}
+\toprule
+alg & .metric & .estimate\\
+\midrule
+logit & accuracy & 0.8526025\\
+tree & accuracy & 0.8684170\\
+nnet & accuracy & 0.8545985\\
+knn & accuracy & 0.8436972\\
+svm & accuracy & 0.8639644\\
+\bottomrule
+\end{tabular}
+
+\end{document}
