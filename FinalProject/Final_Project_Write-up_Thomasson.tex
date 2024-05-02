@@ -1,4 +1,7 @@
-\documentclass{article}
+\documentclass[12pt]{article}
+\usepackage{setspace}
+% Set line spacing to double
+\doublespacing
 \usepackage[utf8]{inputenc}
 \usepackage{geometry}
 \usepackage{amsmath}
@@ -83,10 +86,10 @@ Where:
     \item $LPBTD_t$ $(LNBTD_t)$ represents the group of firm-years with a deferred tax expense, positive book-tax differences, (deferred tax benefit, negative book-tax differences) in the top (bottom) quintile of firm-years in the sample. $SmallBTDt$  represents the group of firm-years not included in $LPBTD_t$ $(LNBTD_t)$ (i.e., firm-years with relatively small book-tax differences). $LPBTD_t$ $(LNBTD_t) = 1$ if the observation is included in the group. Else $0$,
     \item $DTE_t = \text{deferred tax expense (benefit) in the current year,}$
 \begin{align*}
-&\text{grossed up by statutory tax rate} \\
-&\text{(sum of domestic and foreign deferred tax expense (benefit) (TXDFED and TXDFO in Compustat respectively),} \\
-&\text{or total deferred tax expense (TXDI in Compustat) where domestic and foreign deferred tax expense are missing,} \\
-&\text{divided by 35 percent for 1994-2017 and 21\% for 2018-2023).}
+&\text{grossed up by statutory tax rate (sum of domestic and foreign deferred tax} \\
+&\text{expense (benefit) (TXDFED and TXDFO in Compustat respectively), or total} \\
+&\text{deferred tax expense (TXDI in Compustat) where domestic and foreign deferred}\\ &\text{tax expense are missing, divided by 35 percent for 1994-2017 and 21\%} \\
+&\text{for 2018-2023).}
 \end{align*}
 
     \item $LBTD_t$ represents the group of firm-years with a deferred tax expense (benefit), regardless of being positive or negative, in the top (bottom) quintile of firm-years in the sample. $LBTD_t = 1$ if the observation is included in the group. Else $0$, and
