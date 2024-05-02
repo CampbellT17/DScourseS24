@@ -1,0 +1,232 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{natbib}
+\usepackage{adjustbox}
+\bibliographystyle{plainnat}
+\geometry{a4paper, margin=1in}
+
+\title{The Persistence and Pricing of Earnings, Accruals, and Cash Flows When Firms Have Large Book-Tax Differences: A Replication and Expansion of Hanlon (2005)}
+\author{Campbell Thomasson}
+\date{Spring 2024}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+In this paper, I replicate Michelle Hanlon's 2005 publication, \textit{The Persistence and Pricing of Earnings, Accruals, and Cash Flows When Firms Have Large Book-Tax Differences}. I extend the sample size to include the time period since this study, and I add in additional analysis. The paper investigates the role of book-tax differences in predicting future taxable income. My results corroborate with Hanlon's original findings that firms with large book-tax differences generally have less predictive, and therefore lesser quality, earnings.
+\end{abstract}
+
+\section{Introduction}
+In this paper, I replicate one of the main results of Michelle Hanlon’s 2005 publication, \textit{The Persistence and Pricing of Earnings, Accruals, and Cash Flows When Firms Have Large Book-Tax Differences}. The original paper investigated the role of book-tax differences in indicating the persistence of one-year ahead taxable income. My replication focuses on this question, while also expanding the sample size to include the time period since the original paper while also adding in some additional analysis.
+
+Both the original study and my replication find that firm-years with large book-tax differences, whether they be positive or negative, have earnings that are less predictive of future earnings than those with small book-tax differences. Additionally, similar to results found in Sloan (1996), the pre-tax cash flow component of Pre-Tax Book Income (PTBI) in year $t$ is found to be more predictive than the pre-tax accrual component of PTBI. However, the predictive power of both components lessens when controlled for large book-tax differences, whether they be positive or negative.
+
+I used historical financial statement data available on Compustat to conduct this replication. The original paper used data from 1994-2000. To add modern context to the contribution made by this paper, I also included data from 2001-2022 to see how the results have held up over time. I find that the results from the original paper still hold true during both the original time period (1994-2000) and expanded time period (1994-2022).
+
+The main contribution of my paper is to confirm Hanlon (2005)’s findings over an extended period of time while also adding more explanatory context and analysis surrounding the original study. Section II of the paper will review the accounting literature surrounding this paper. Section III will describe the data used for the regressions. Section IV will describe the empirical methods and primary regression models. Section V discusses results. Section VI concludes.
+
+\section{Background and Literature Review}
+In 2005, Michelle Hanlon published \textit{The Persistence and Pricing of Earnings, Accruals, and Cash Flows When Firms Have Large Book-Tax Differences}. The study found that firms with large book-tax differences, whether they be positive or negative, have less predictive power over one-year ahead PTBI than firms with small book-tax differences. Additionally, similar to results found in Sloan (1996), the pre-tax accrual component of PTBI is less predictive of one-year ahead PTBI than the pre-tax cash flow component of PTBI, though both components’ predictive power is lessened in firms with large book-tax differences.
+
+Before discussing the hypotheses, it would benefit us to discuss book-tax differences. Under Generally Accepted Accounting Principles (GAAP), the set of accounting standards used by U.S. accountants, revenue and expenses are recognized as the performance obligations of the relevant parties are met. For example, if one were to go to a department store and buy a pair of shoes with a credit card, the department store can recognize the sale as revenue, despite the lack of cash changing hands at that moment. That concept trickles down to a lot of different revenues and expenses, such as inventory costs, debt payments paid and/or received, depreciation of fixed assets, etc. Rules established by the SEC, FASB, and GAAP lead to the book income found on published financial statements.
+
+As for establishing taxable income, firms follow a different set of rules established by the Internal Revenue Code (IRC) to arrive at taxable income reported on their tax returns filed with the Internal Revenue Service (IRS). Thus, book income and taxable income are not the same figure. Book-tax differences can either be permanent, or they can be temporary. 
+
+An example of a permanent book-tax difference is municipal bond interest income. You report the interest income on your financial statements under GAAP, but interest income received from government bonds is not taxable under the IRC. Therefore, a permanent book-tax difference is established for this amount, and book and taxable income will never reconcile for this amount.
+
+Meanwhile, temporary book-tax differences are those created solely due to timing differences between book and taxable income. These temporary book-tax differences will eventually reverse and resolve over time. Temporary book-tax differences are split into deferred tax assets (DTAs) and deferred tax liabilities (DTLs).
+
+Deferred tax assets increase as firms currently recognize expense and/or defer revenue for book-tax purposes, thereby producing a future deductible amount. You pay taxes on an item now, but you will not have to report new taxes paid at a later time period when the item in question is recognized in the financial statements. An example of a deferred tax asset is a net operating loss (NOL). You cannot report taxable income below zero. However, you can carry the NOL forward until you arrive at a future year where you are profitable and have taxable income, which is then offset by the NOL. Therefore, when a firm has a NOL in a given firm-year, it establishes a DTA in the amount of the NOL, and it will reverse when the firm uses it to offset taxable income in a future year.
+
+Deferred tax liabilities increase as firms currently recognize revenue and/or defer expense for book-tax purposes, thereby producing a future payable amount. You reap the benefits on your tax return now, but you will have to pay taxes on those items later, while the benefits of the tax savings reported on the financial statements will be left in the current year. An example of a deferred tax liability is depreciation. Under GAAP, most fixed assets are depreciated evenly over the life of the asset, commonly known as the straight-line method. Under tax rules, most companies now depreciate the entire cost of an asset in the first year. Therefore, a temporary deferred tax liability is created in the amount of the difference between one year of straight-line depreciation and depreciating all the cost up front. During the first year, the company reaps the tax savings, but it will not get tax benefits during the rest of the asset’s life, while on the books, the company must continue to recognize straight-line depreciation expense without any corresponding income tax benefit from that expense being recognized on a tax return.
+
+As the names “Deferred Tax Asset” and “Deferred Tax Liability” may imply, assets and liabilities are established on the balance sheet for the DTAs and DTLs respectively. A net DTL (DTA) balance creates a deferred tax expense (benefit) to be recognized over time as the deferred balance reverses.
+
+The existence of book-tax differences potentially calls the quality of either measure of earnings into question. If there are two separate measurements of earnings, how can either be a true picture of a firm’s financial position? Dechow et al. (2010) states that high quality earnings must be “relevant to a specific decision made by a specific decision-maker \citep{Dechow10}.” The users of book income (debtholders, shareholders, financial analysts, banks, etc.) need the information for different purposes than the users of taxable income (Internal Revenue Service). Two different measurements of earnings accomplish different tasks for different users \citep{Blaylock15}. However, there are those that call for the merging of book and taxable income.
+
+Hanlon (2021) defines book-tax conformity as when book and taxable income “are conformed such that a company reports only one (and the same) income measure to stakeholders and the tax authorities \citep{Hanlon21}.” Proponents argue that book-tax conformity will reduce the incentive for earnings management due to the increased tax cost per additional dollar of income \citep{Blaylock15}. Opponents argue that book-tax conformity will actually increase the incentive for earnings management.
+
+The natural incentive for book income is to report book income high, as that will increase firm valuation and encourage more investors. The natural incentive for taxable income is to report taxable income low, as that will save the firms (and their stakeholders) cash, thereby coming closer to maximizing shareholder wealth. But what does it say about the quality of earnings for a firm if book income is potentially inflated while taxable income is potentially deflated? Overall, managers having to toe the line between satisfying their stakeholders while also optimally mitigating their taxes has led to results being found that book-tax conformity is associated with more, not less, earnings management \citep{Blaylock15} \citep{Hanlon21}. 
+
+If book-tax differences are large, that could (though will not always) indicate abnormal management on either side of the book-tax line, either through earnings management of accruals on the book side to push book income up, or through tax planning on the tax side to push taxable income down. Mills (1998) finds that firms with larger book-tax differences are more likely subject to IRS audit \citep{Mills98}. Revsine et al. (1999) suggests that increases in DTLs or decreases in DTAs may indicate lessened earnings quality \citep{Revsine99}. While the prior logic may lend itself to the conjecture that lower quality earnings are only found in firms with large positive book-tax differences (more book income than taxable income), studies such as Joos et al. (2000) reason that firms with large book-tax differences in either direction are suspected of having lower quality earnings \citep{Joos00}. In fact, if you look at Figure 1, you will see that in my sample there is a fairly even distribution of positive-to-negative book-tax-differences on either side of 0. Hanlon (2005) posits that firms with large book-tax differences have less predictive earnings than firms with smaller book-tax differences:
+
+\textbf{H1:} Pre-tax earnings persistence for firm-years with large negative or large positive book-tax differences is lower than pre-tax earnings persistence for firm-years with small book-tax differences \citet{Hanlon05}.
+
+When looking at how current earnings relate to the timing of matching obligation and performance with reported revenues and expenses, we can conclude that current earnings will be made up of both cash flow and non-cash flow (accrual) components. Sloan (1996) found that the cash flow component of earnings is more predictive of future earnings than the accrual portion of earnings \citep{Sloan96}. Hanlon (2005) wanted to test this premise within the context of differences between PTBI and taxable income:
+
+\textbf{H2:} The persistence of the accruals component of earnings for future earnings is lower for firm-years with large negative or large positive book-tax differences relative to firm-years with small book-tax differences \citep{Hanlon05}. 
+
+\section{Data}
+All summary statistics for the data in the study can be found in Table 1. The data for my replication was taken from the annual financial reporting data found in Compustat. The original study utilized 14,106 firm-year observations from 1994-2000. Hanlon (2005) left out years prior to 1994, because “the accounting for income taxes changed significantly with the implementation of SFAS No. 109 effective in 1993,” \citep{Hanlon05}. For purposes of this replication, I also included firm-year observations from 2001-2023 to see how the results hold up with another twenty-three years’ worth of data. From 1994-2023, my sample utilizes 24,931 firm-year observations.
+
+I follow Hanlon (2005)’s model of observation exclusion. I remove firms in the financial services and utilities industries. I remove observations that do not have a positive current tax expense or PTBI. I remove observations with an observed NOL carryforward identified by Compustat. Finally, I remove observations that do not have all the needed variables to perform regressions.
+
+Additionally, as Compustat data for me can be downloaded and filtered via a cloud system such as WRDS, it is worth noting that my process of data collection is different than Hanlon’s would have been in the 2000s. Finally, to limit the effect of outliers, I utilize the method designed by Charles P. Winsor to “Winsorize” the regression variables. The variables are “Winsorized” for the top 1\% and bottom 1\% of the data, meaning the top 1\% of the data is replaced by the value of the data at the 99th percentile, and the value of the bottom 1\% of the data is replaced by the value of the data at the 1st percentile.
+
+\section{Empirical Analysis}
+To test the hypothesis that pre-tax earnings persistence for firm-years with large negative or large positive book-tax differences is lower than pre-tax earnings persistence for firm-years with small book-tax differences, three regressions are used, defined below:
+\begin{enumerate}
+    \item $PTBI_{t+1} = \beta_0 + \beta_1PTBI_t + \varepsilon_{t+1}$
+    \item $PTBI_{t+1} = \beta_0 + \beta_1LBTD_t + \beta_2PTBI_t + \beta_3PTBI_t * LBTD_t + \varepsilon_{t+1}$
+    \item $PTBI_{t+1} = \beta_0 + \beta_1LNBTD_t + \beta_2LPBTD_t + \beta_3PTBI_t + \beta_4PTBI_t * LNBTD_t + \beta_5PTBI_t * LPBTD_t + \varepsilon_{t+1}$
+\end{enumerate}
+Where:
+\begin{itemize}
+    \item $PTBI_{t+1} = \text{pre-tax book income one-year-ahead (PI in Compustat)}$
+    \item $PTBI_t = \text{pre-tax book income in the current year (PI in Compustat)}$
+    \item $LPBTD_t$ $(LNBTD_t)$ represents the group of firm-years with a deferred tax expense, positive book-tax differences, (deferred tax benefit, negative book-tax differences) in the top (bottom) quintile of firm-years in the sample. $SmallBTDt$  represents the group of firm-years not included in $LPBTD_t$ $(LNBTD_t)$ (i.e., firm-years with relatively small book-tax differences). $LPBTD_t$ $(LNBTD_t) = 1$ if the observation is included in the group. Else $0$,
+    \item $DTE_t = \text{deferred tax expense (benefit) in the current year,}$
+\begin{align*}
+&\text{grossed up by statutory tax rate} \\
+&\text{(sum of domestic and foreign deferred tax expense (benefit) (TXDFED and TXDFO in Compustat respectively),} \\
+&\text{or total deferred tax expense (TXDI in Compustat) where domestic and foreign deferred tax expense are missing,} \\
+&\text{divided by 35 percent for 1994-2017 and 21\% for 2018-2023).}
+\end{align*}
+
+    \item $LBTD_t$ represents the group of firm-years with a deferred tax expense (benefit), regardless of being positive or negative, in the top (bottom) quintile of firm-years in the sample. $LBTD_t = 1$ if the observation is included in the group. Else $0$, and
+    \item All variables are scaled by $AVETA_t$, which is average total assets (AT in Compustat) between year $t$ and year $t-1$.
+    \item All variables are Winsorized at 1\% and 99\%.
+\end{itemize}
+
+To test the hypothesis that pre-tax earnings persistence for firm-years with large negative or large positive book-tax differences is lower than pre-tax earnings persistence for firm-years with small book-tax differences, three regressions are used, defined below:
+\begin{enumerate}
+    \item $PTBI_{t+1} = \beta_0 + \beta_1PTCF_t + \beta_2PTACC_t + \varepsilon_{t+1}$
+    \item $PTBI_{t+1} = \beta_0 + \beta_1LBTD_t + \beta_2PTCF_t + \beta_3PTACC_t + \beta_4PTCF_t * LBTD_t + \beta_5PTACC_t * LBTD_t + \varepsilon_{t+1}$
+    \item $PTBI_{t+1} = \beta_0 + \beta_1LNBTD_t + \beta_2LPBTD_t + \beta_3PTCF_t + \beta_4PTACC_t + \beta_5PTCF_t * LNBTD_t + \beta_6PTCF_t * LPBTD_t + \beta_7PTACC_t * LNBTD_t + \beta_8PTACC_t * LPBTD_t + \varepsilon_{t+1}$
+\end{enumerate}
+Where:
+\begin{itemize}
+   \item $PTCF_t = \text{pre-tax cash flow for the current year}$ \\
+      $(\text{Operating Net Cash Flows (OANCF in Compustat)}$ \\
+      $+ \text{Taxes Paid (TXPD in Compustat)}$ \\
+      $- \text{Extraordinary Items (XIDOC in Compustat)})$
+
+    \item $PTACC_t = \text{pre-tax accruals for the current year} (PTBI_t - PTCF_t)$.
+\end{itemize}
+
+\section{Results}
+Table 2 provides results of the first three regressions. Columns 1-2 provides the original results from Hanlon (2005) (Models 1 and 3, as Model 2 was added by me). In order to hold myself accountable to replicating the results of the original paper as closely as I could, columns 3-4 provides the replicated Hanlon (2005) results (Models 1 and 3). Columns 5-7 provide the results in the expanded 1994-2023 time period (All of Models 1, 2, and 3 included here). 
+
+In (1), $\beta_1PTBI_t$ is shown to be statistically significant and positive, indicating a baseline positive predictive power of $PTBI_t$ on $PTBI_{t+1}$. In (2), $\beta_2PTBI_t$ is still shown to be statistically significant and positive, but to a greater extent than in (1), as the regression has been controlled to account for the predictive power of firms with large book-tax differences $(\beta_3PTBI_t * LBTD_t)$, which is shown to be negative and statistically significant, indicating that firms with large book-tax differences have less predictive power than firms with small book-tax differences. In (3), $\beta_3PTBI_t$ is still shown to be statistically significant and positive, but to a greater extent than in (1), as the regression has been controlled to account for the predictive power of firms with large negative $(\beta_4PTBI_t * LNBTD_t)$ and large positive book-tax differences $(\beta_5PTBI_t * LNBTD_t)$, which are both shown to be negative and statistically significant, indicating that firms with large book-tax differences, whether they be positive or negative, have less predictive power than firms with small book-tax differences, supporting the conclusions stated in H1.
+
+Table 3 provides results of the last three regressions. Columns 1-2 provides the original results from Hanlon (2005). Columns 3-4 provides the replicated Hanlon (2005) results. Columns 5-7 provide the results in the expanded 1994-2023 time period. 
+
+In (4), $\beta_1PTCF_t$ and $\beta_2PTACC_t$ are both shown to be positive and statistically significant, though with $\beta_1PTCF_t$ being of much greater magnitude than $\beta_2PTACC_t$. This indicates that while both pre-tax cash flows and pre-tax accruals are positive predictors of future earnings, pre-tax cash flows are indeed more predictive than pre-tax accruals. In (5), $\beta_2PTCF_t$ and $\beta_3PTACC_t$ are still shown to be statistically significant and positive, but to a greater extent than in (4), as the regression has been controlled to account for the predictive power of firms with large book-tax differences $(\beta_4PTCF_t * LBTD_t$ and $\beta_5PTACC_t * LBTD_t)$, which are shown to be negative and statistically significant, indicating that firms with large book-tax differences have less predictive power than firms with small book-tax differences. It is also worth noting that $\beta_4PTCF_t * LBTD_t$ is less negative than $\beta_5PTACC_t * LBTD_t$, indicating that large book-tax differences related to pre-tax cash flows do not take away as much predictive power as large book-tax differences related to pre-tax accruals. In (6), $\beta_2PTCF_t$ and $\beta_3PTACC_t$ are still shown to be statistically significant and positive, but to a greater extent than in (4), as the regression has been controlled to account for the predictive power of firms with large negative $(\beta_5PTCF_t * LNBTD_t$ and $\beta_7PTACC_t * LNBTD_t)$ and large positive book-tax differences $(\beta_6PTCF_t * LPBTD_t$ and $\beta_8PTACC_t * LPBTD_t)$, which are all shown to be negative and statistically significant, indicating that firms with large book-tax differences, whether they be positive or negative, have less predictive power than firms with small book-tax differences. It is also worth noting that $\beta_5PTCF_t * LNBTD_t$ and $\beta_6PTCF_t * LPBTD_t$ are less negative than $\beta_7PTCF_t * LNBTD_t$ and $\beta_8PTCF_t * LPBTD_t$, indicating that large book-tax differences related to pre-tax cash flows do not take away as much predictive power as large book-tax differences related to pre-tax accruals. These findings are consistent with Sloan (1996) and support the conclusions stated in H2 \citep{Sloan96}.
+
+\section{Conclusion}
+My replication of Hanlon (2005)’s main results on the persistence of earnings, accruals, and cash flows when firms have large book-tax differences found results consistent with the original paper. I find that firm-years with large book-tax differences, whether they be positive or negative, have earnings that are less predictive than those with small book-tax differences. Additionally, the pre-tax cash flow component of PTBI is more predictive than the pre-tax accrual component of PTBI, though both components’ predictive power is lessened in firms with large book-tax differences. These results hold true during both the original time period of the original paper and an extended time period through 2019. My replication of these results with additional context and analysis provides evidence for the robustness of Hanlon (2005)’s findings.
+
+\newpage
+
+\section{References}
+\bibliography{PS11_Thomasson}
+
+\newpage
+
+\section{Figures and Tables}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.75\linewidth]{Figure 1.png}
+    \caption{Histogram}
+\end{figure}
+
+\begin{table}[htbp]
+\centering
+\caption{Summary Statistics}
+\label{tab:summary_statistics}
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{|l|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+\hline
+Variable & N & Mean & Std Dev & Lower Quartile & Upper Quartile & Minimum & Maximum \\
+\hline
+scaled\_pip1 & 24931 & 0.1078187 & 0.0914360 & 0.0476082 & 0.1516650 & 0.4474604 & 0.3550000 \\
+scaled\_pi & 24931 & 0.1334811 & 0.1036462 & 0.0589006 & 0.1789094 & 0.5468113 & 0.5468113 \\
+scaled\_ptcf & 24931 & 0.1525359 & 0.1232536 & 0.0737541 & 0.2155440 & 0.5803303 & 0.5803303 \\
+scaled\_ptacc & 24931 & -0.0182382 & 0.0869137 & -0.0659407 & 0.0132714 & 0.3406552 & 0.3406552 \\
+scaled\_dte & 24931 & 0.0027194 & 0.0327228 & -0.0106243 & 0.0158780 & 0.1203809 & 0.1203809 \\
+aveta & 24931 & 7538.08 & 76531.74 & 75.9150 & 1248.95 & 4267227.00 & 1.0000000 \\
+lnbtd & 24931 & 0.1999920 & 0.4000020 & 0 & 0 & 1.0000000 & 1.0000000 \\
+lpbtd & 24931 & 0.1999920 & 0.4000020 & 0 & 0 & 1.0000000 & 1.0000000 \\
+small\_btd & 24931 & 0.6000160 & 0.4899045 & 0 & 1.0000000 & 1.0000000 & 1.0000000 \\
+lbtd & 24931 & 0.3999840 & 0.4899045 & 0 & 1.0000000 & 1.0000000 & 1.0000000 \\
+pi\_lnbtd & 24931 & 0.0314645 & 0.0829830 & 0 & 0 & 0.5468113 & 0.5468113 \\
+pi\_lpbtd & 24931 & 0.0305254 & 0.0757147 & 0 & 0 & 0.5468113 & 0.5468113 \\
+pi\_lbtd & 24931 & 0.0619899 & 0.1034306 & 0 & 0.1018835 & 0.5468113 & 0.5468113 \\
+ptcf\_lnbtd & 24931 & 0.0371767 & 0.0971305 & 0 & 0 & 0.3406552 & 0.3406552 \\
+ptcf\_lpbtd & 24931 & 0.0343791 & 0.0868147 & 0 & 0 & 0.3406552 & 0.3406552 \\
+ptcf\_lbtd & 24931 & 0.0715558 & 0.1200617 & 0 & 0.1321619 & 0.3406552 & 0.3406552 \\
+ptacc\_lnbtd & 24931 & -0.0054707 & 0.0469806 & 0 & 0 & 0.3406552 & 0.3406552 \\
+ptacc\_lpbtd & 24931 & -0.0037462 & 0.0406234 & 0 & 0 & 0.3406552 & 0.3406552 \\
+ptacc\_lbtd & 24931 & -0.0092170 & 0.0617774 & 0 & 0 & 0.3406552 & 0.3406552 \\
+\hline
+
+\end{tabular}
+\end{adjustbox}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\caption{Models 1-3 Results}
+\label{tab:Models_1_3_Results}
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+\hline
+Variable & Orig. (1) & Orig. (3) & Replicate (1) & Replicate (3) & 1994-2022 (1) & 1994-2022 (2) & 1994-2022 (3) \\
+\hline
+Intercept & 0.003* & -0.003 & 0.027*** & 0.019*** & 0.025*** & 0.019*** & 0.019*** \\
+scaled\_pi & 0.678*** & 0.742*** & 0.570*** & 0.651*** & 0.620*** & 0.681*** & 0.681*** \\
+lbtd &  &  &  &  &  & 0.0141*** & \\
+pi\_lbtd &  &  &  &  &  & -0.123*** & \\
+lnbtd &  & 0.017*** &  & 0.025*** &  &  & 0.020*** \\
+lpbtd &  & 0.017*** &  & 0.008* &  &  & 0.009*** \\
+pi\_lnbtd &  & -0.100*** &  & -0.184*** &  &  & -0.121*** \\
+pi\_lpbtd &  & -0.212*** &  & -0.145*** &  &  & -0.130*** \\
+\hline
+Adj $R^2$ & 0.267 & 0.272 & 0.447 & 0.459 & 0.495 & 0.500 & 0.502 \\
+\hline
+N & 14,106 & 14,106 & 12,755 & 12,755 & 24,931 & 24,931 & 24,931 \\
+\hline
+\end{tabular}
+\end{adjustbox}
+\footnotesize{+ p < 0.1, * p < 0.05, ** p < 0.01, *** p < 0.001}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\caption{Models 4-6 Results}
+\label{tab:Models_4_6_Results}
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+\hline
+Variable & Orig. (4) & Orig. (6) & Replicate (4) & Replicate (6) & 1994-2022 (4) & 1994-2022 (5) & 1994-2022 (6) \\
+\hline
+Intercept & -0.010*** & -0.014*** & 0.024*** & 0.017*** & 0.020*** & 0.015*** & 0.015*** \\
+scaled\_ptcf & 0.752*** & 0.806*** & 0.584*** & 0.658*** & 0.634*** & 0.692*** & 0.692*** \\
+scaled\_ptacc & 0.490*** & 0.557*** & 0.469*** & 0.554*** & 0.480*** & 0.556*** & 0.556*** \\
+lbtd &  &  &  &  &  & 0.010*** & \\
+ptcf\_lbtd &  &  &  &  &  & -0.114*** &  \\
+ptacc\_lbtd &  &  &  &  &  & -0.150*** &  \\
+lnbtd &  & 0.011** &  & 0.023*** &  &  & 0.016*** \\
+lpbtd &  & 0.009* &  & 0.004 &  &  & 0.005* \\
+ptcf\_lnbtd &  & -0.083*** &  & -0.174*** &  &  & -0.117*** \\
+ptcf\_lpbtd &  & -0.167*** &  & -0.121*** &  &  & -0.113*** \\
+ptacc\_lnbtd &  & -0.115*** &  & -0.171*** &  &  & -0.150*** \\
+ptacc\_lpbtd &  & -0.187*** &  & -0.157*** &  &  & -0.145*** \\
+\hline
+Adj $R^2$ & 0.313 & 0.317 & 0.453 & 0.464 & 0.503 & 0.508 & 0.510 \\
+\hline
+N & 14,106 & 14,106 & 12,755 & 12,755 & 24,931 & 24,931 & 24,931 \\
+\hline
+\end{tabular}
+\end{adjustbox}
+\footnotesize{+ p < 0.1, * p < 0.05, ** p < 0.01, *** p < 0.001}
+\end{table}
+
+\end{document}

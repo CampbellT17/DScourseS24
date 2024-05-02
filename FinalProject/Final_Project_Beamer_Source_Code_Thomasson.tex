@@ -1,0 +1,147 @@
+\documentclass{beamer}
+\usetheme{default}
+
+% Title slide
+\title{Are Earnings with Large Book-Tax Differences Reliable? A Replication and Extension of Hanlon (2005)}
+\author{Campbell Thomasson}
+\date{\today}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% Introduction
+\begin{frame}{Introduction}
+\begin{itemize}
+    \item  Companies use different rules of reporting income. Financial Statements use GAAP. Tax Returns use the IRC.
+    \item  Differences are known as Book-Tax Differences. Typically, these are only timing differences and will resolve over time.  
+    \item  However, companies are incentivized to report high book income and low taxable income, so if the book-tax differences are large, it may be a sign of earnings management and/or tax avoidance.
+\end{itemize}
+\end{frame}
+
+% Hypotheses
+\begin{frame}{Hypotheses}
+\begin{itemize}
+    \item \textbf{H1:} Pre-tax earnings persistence for firm-years with large negative or large positive book-tax differences is lower than pre-tax earnings persistence for firm-years with small book-tax differences.
+    \item  \textbf{H2:} The persistence of the accruals component of earnings for future earnings is lower for firm-years with large negative or large positive book-tax differences relative to firm-years with small book-tax differences.
+\end{itemize}
+\end{frame}
+
+% Data
+\begin{frame}{Data}
+\begin{itemize}
+    \item  All data was collected from Compustat via the SAS Studio server provided by Wharton.
+    \item  Deferred Tax Expense = Book-Tax-Differences. 
+    \item  PTBI = Pre-Tax Book Income
+    \item  PTCF = Pre-Tax Cash Flows
+    \item  PTACC = Pre-Tax Accruals
+    \item  LBTD = Large Book-Tax Differences (Top or Bottom Quintile)
+    \item  LPBTD = Large Positive Book-Tax Differences (Book > Tax) (Top Quintile)
+    \item  LNBTD = Large Negative Book-Tax Differences (Book < Tax) (Bottom Quintile)
+\end{itemize}
+\end{frame}
+
+% Methods
+\begin{frame}{Methods - PTBI}
+    \item $PTBI_{t+1} = \beta_0 + \beta_1PTBI_t + \varepsilon_{t+1}$
+
+    \vspace{0.5cm}
+    
+    \item $PTBI_{t+1} = \beta_0 + \beta_1LBTD_t + \beta_2PTBI_t + \beta_3PTBI_t * LBTD_t + \varepsilon_{t+1}$
+
+    \vspace{0.5cm}
+    
+    \item $PTBI_{t+1} = \beta_0 + \beta_1LNBTD_t + \beta_2LPBTD_t + \beta_3PTBI_t + \beta_4PTBI_t * LNBTD_t + \beta_5PTBI_t * LPBTD_t + \varepsilon_{t+1}$
+\end{frame}
+
+% Methods - PTBI Components
+\begin{frame}{Methods - PTBI Components}
+    \item $(4) PTBI_{t+1} = \beta_0 + \beta_1PTCF_t + \beta_2PTACC_t + \varepsilon_{t+1}$
+
+    \vspace{0.5cm}
+    
+    \item $(5) PTBI_{t+1} = \beta_0 + \beta_1LBTD_t + \beta_2PTCF_t + \beta_3PTACC_t + \beta_4PTCF_t * LBTD_t + \beta_5PTACC_t * LBTD_t + \varepsilon_{t+1}$
+
+    \vspace{0.5cm}
+    
+    \item $(6) PTBI_{t+1} = \beta_0 + \beta_1LNBTD_t + \beta_2LPBTD_t + \beta_3PTCF_t + \beta_4PTACC_t + \beta_5PTCF_t * LNBTD_t + \beta_6PTCF_t * LPBTD_t + \beta_7PTACC_t * LNBTD_t + \beta_8PTACC_t * LPBTD_t + \varepsilon_{t+1}$
+\end{frame}
+
+% Findings
+\begin{frame}{Findings}
+  \begin{table}[htbp]
+\centering
+\caption{PTBI Persistence Results}
+\label{tab:Models_1_3_Results}
+\begin{tabular}{|c|c|c|c|}
+\hline
+Variable & (1) & (2) & (3) \\
+\hline
+Intercept & 0.025*** & 0.019*** & 0.019*** \\
+scaled\_pi & 0.620*** & 0.681*** & 0.681*** \\
+lbtd & 0.0141*** & \\
+pi\_lbtd &  & -0.123*** & \\
+lnbtd &  &  & 0.020*** \\
+lpbtd &  &  & 0.009*** \\
+pi\_lnbtd &  &  & -0.121*** \\
+pi\_lpbtd &  &  & -0.130*** \\
+\hline
+Adj $R^2$ & 0.495 & 0.500 & 0.502 \\
+\hline
+N & 24,931 & 24,931 & 24,931 \\
+\hline
+\end{tabular}
+\end{table}
+\end{frame}
+
+% Findings
+\begin{frame}{Findings}
+  \begin{table}[htbp]
+\centering
+\caption{Pre-Tax Earnings Components Results}
+\label{tab:Models_4_6_Results}
+\begin{tabular}{|c|c|c|c|}
+\hline
+Variable & (4) & (5) & (6) \\
+\hline
+Intercept & 0.020*** & 0.015*** & 0.015*** \\
+scaled\_ptcf & 0.634*** & 0.692*** & 0.692*** \\
+scaled\_ptacc & 0.480*** & 0.556*** & 0.556*** \\
+lbtd &  & 0.010*** & \\
+ptcf\_lbtd &  & -0.114*** &  \\
+ptacc\_lbtd &  & -0.150*** &  \\
+lnbtd &  &  & 0.016*** \\
+lpbtd &  &  & 0.005* \\
+ptcf\_lnbtd &  &  & -0.117*** \\
+ptcf\_lpbtd &  &  & -0.113*** \\
+ptacc\_lnbtd &  &  & -0.150*** \\
+ptacc\_lpbtd &  &  & -0.145*** \\
+\hline
+Adj $R^2$ & 0.503 & 0.508 & 0.510 \\
+\hline
+N & 24,931 & 24,931 & 24,931 \\
+\hline
+\end{tabular}
+\end{table}
+\end{frame}
+
+%How Did AI Help?
+\begin{frame}{How did AI Help?}
+\begin{itemize}
+    \item  ChatGPT made this slide template and showed me how to actually make a Beamer.
+    \item  ChatGPT also took my research paper from my Microsoft Word Document and wrote the whole thing in LaTeX script for me.
+\end{itemize}
+\end{frame}
+
+% Conclusion
+\begin{frame}{Conclusion}
+\begin{itemize}
+    \item  Large Book-Tax Differences are associated with less persistent, and therefore lower quality, reported earnings.
+    \item  Cash Flows are a better predictor of future performance than accruals, but both components are less predictive in firms with large book-tax differences.
+    \item  Whatever choices led you to not becoming an accounting researcher - you can still feel good about those choices.
+\end{itemize}
+\end{frame}
+
+\end{document}
